@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import { Theme } from '@mui/material';
 
-export const FooterBox = styled.footer`
+export const FooterBox = styled.footer<{ theme: Theme }>`
   padding: 20px 0;
   transition: background-color 250ms linear;
 

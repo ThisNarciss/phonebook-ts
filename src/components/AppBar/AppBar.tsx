@@ -15,18 +15,19 @@ import {
   LogoNameBox,
   SiteName,
 } from './AppBar.styled';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import { UserMenu } from '../UserMenu/UserMenu';
 import { useAuth } from '../../hooks/useAuth';
 import { LogoIcon } from '../../custom-icon/LogoMobileIcon';
 import { MaterialUISwitch } from '../Switch/Switch';
-
-import { useMyContext } from '../ThemeContainer/ThemeContainer';
+import { useMyContext } from '../../hooks/useMyContext';
 
 export function SiteAppBar() {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [checked, setChecked] = useState(
-    () => JSON.parse(localStorage.getItem('checked')) ?? true
+  const [anchorElNav, setAnchorElNav] = useState<HTMLButtonElement | null>(
+    null
+  );
+  const [checked, setChecked] = useState<undefined | boolean>(
+    () => JSON.parse(localStorage.getItem('checked') as string) ?? true
   );
   const colorMode = useMyContext();
   const { isLoggedIn } = useAuth();
@@ -35,13 +36,13 @@ export function SiteAppBar() {
     localStorage.setItem('checked', JSON.stringify(checked));
   }, [checked]);
 
-  const handleChange = event => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     colorMode.toggleColorMode();
 
     setChecked(event.target.checked);
   };
 
-  const handleOpenNavMenu = event => {
+  const handleOpenNavMenu = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorElNav(event.currentTarget);
   };
 
@@ -66,7 +67,7 @@ export function SiteAppBar() {
             }}
           >
             <IconLogoBox>
-              <LogoIcon size={40} fill={'#fff68f'} />
+              <LogoIcon size={'40'} fill={'#fff68f'} />
             </IconLogoBox>
             <Typography
               variant="h6"
@@ -125,10 +126,10 @@ export function SiteAppBar() {
               </Menu>
             </Box>
             <IconLogoMobBox>
-              <LogoIcon size={40} fill={'#fff68f'} />
+              <LogoIcon size={'40'} fill={'#fff68f'} />
             </IconLogoMobBox>
             <LogoNameBox>
-              <LogoIcon size={70} fill={'#fff68f'} />
+              <LogoIcon size={'70'} fill={'#fff68f'} />
             </LogoNameBox>
             <Typography
               variant="h5"

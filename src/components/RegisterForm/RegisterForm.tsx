@@ -14,8 +14,10 @@ import {
   LabelRegLog,
   Title,
 } from '../FormStyle.styled';
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import { BiRegistered } from 'react-icons/bi';
+import { FC } from 'react';
+import { AppDispatch } from '../../redux/store';
 
 const nameId = nanoid();
 const emailId = nanoid();
@@ -27,20 +29,29 @@ const schema = yup.object().shape({
   password: yup.string().min(7).trim().required(),
 });
 
-const initialValue = {
+type InitialValueType = {
+  name: string;
+  email: string;
+  password: string;
+};
+
+const initialValue: InitialValueType = {
   name: '',
   email: '',
   password: '',
 };
 
-export function RegisterForm() {
-  const dispatch = useDispatch();
+export const RegisterForm: FC = () => {
+  const dispatch: AppDispatch = useDispatch();
 
-  const registeredUser = values => {
+  const registeredUser = (values: InitialValueType) => {
     dispatch(registerUser(values));
   };
 
-  const handleFormSubmit = (values, { resetForm }) => {
+  const handleFormSubmit = (
+    values: InitialValueType,
+    { resetForm }: FormikHelpers<InitialValueType>
+  ) => {
     registeredUser(values);
     resetForm();
   };
@@ -103,4 +114,4 @@ export function RegisterForm() {
       </Container>
     </Section>
   );
-}
+};

@@ -5,7 +5,7 @@ import { loginUser } from '../../redux/auth/operations';
 import Button from '@mui/material/Button';
 import { Section } from '../Section/Section';
 import { Container } from '@mui/system';
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import { BiLogIn } from 'react-icons/bi';
 
 import {
@@ -17,6 +17,8 @@ import {
   LabelRegLog,
   Title,
 } from '../FormStyle.styled';
+import { FC } from 'react';
+import { AppDispatch } from '../../redux/store';
 
 const emailId = nanoid();
 const passwordId = nanoid();
@@ -26,19 +28,27 @@ const schema = yup.object().shape({
   password: yup.string().min(7).trim().required(),
 });
 
-const initialValue = {
+type InitialValueType = {
+  email: string;
+  password: string;
+};
+
+const initialValue: InitialValueType = {
   email: '',
   password: '',
 };
 
-export function LoginForm() {
-  const dispatch = useDispatch();
+export const LoginForm: FC = () => {
+  const dispatch: AppDispatch = useDispatch();
 
-  const signInUser = values => {
+  const signInUser = (values: InitialValueType) => {
     dispatch(loginUser(values));
   };
 
-  const handleFormSubmit = (values, { resetForm }) => {
+  const handleFormSubmit = (
+    values: InitialValueType,
+    { resetForm }: FormikHelpers<InitialValueType>
+  ) => {
     signInUser(values);
     resetForm();
   };
@@ -98,4 +108,4 @@ export function LoginForm() {
       </Container>
     </Section>
   );
-}
+};

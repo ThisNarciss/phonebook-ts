@@ -1,9 +1,11 @@
-import { useTheme } from '@emotion/react';
+// import { useTheme } from '@emotion/react';
 import { Container } from '@mui/system';
 import { FooterLink, FooterText } from './Footer.material';
 import { FooterBox } from './Footer.styled';
+import { useTheme } from '@mui/material';
+import { FC } from 'react';
 
-export function Footer() {
+export const Footer: FC = () => {
   const theme = useTheme();
 
   return (
@@ -29,4 +31,4 @@ export function Footer() {
       </Container>
     </FooterBox>
   );
-}
+};

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Theme } from '@mui/material';
 
 export const TextBox = styled.div`
   max-width: 500px;
@@ -12,7 +13,7 @@ export const AnimationBox = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const HomeTitle = styled.h1`
+export const HomeTitle = styled.h1<{ theme: Theme }>`
   max-width: 500px;
   font-weight: 900;
   font-size: 56px;
@@ -22,7 +23,7 @@ export const HomeTitle = styled.h1`
   color: ${({ theme }) => (theme.palette.mode === 'dark' ? 'white' : 'black')};
 `;
 
-export const HomeLabel = styled.p`
+export const HomeLabel = styled.p<{ theme: Theme }>`
   max-width: 500px;
   font-weight: 500;
   font-size: 36px;

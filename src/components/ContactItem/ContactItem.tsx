@@ -10,20 +10,29 @@ import {
 import { BiUser } from 'react-icons/bi';
 import { deleteContact } from '../../redux/contacts/operations';
 import { LoaderBtn } from '../Loader/Loader';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { UpdateModalForm } from '../UpdateModalForm/UpdateModalForm';
 import { TelLink, Text } from './ContactItem.material';
-import { useTheme } from '@emotion/react';
+// import { useTheme } from '@emotion/react';
+import { AppDispatch } from '../../redux/store';
+import { useTheme } from '@mui/material';
 
-export function ContactItem({ bool, id, name, number }) {
+interface IProps {
+  bool: boolean;
+  id: string;
+  name: string;
+  number: string;
+}
+
+export const ContactItem: FC<IProps> = ({ bool, id, name, number }) => {
   const theme = useTheme();
-  const [deleteBtnId, setDeleteBtnId] = useState(0);
+  const [deleteBtnId, setDeleteBtnId] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
-  const onBtnDeleteClick = id => {
+  const onBtnDeleteClick = (id: string) => {
     setDeleteBtnId(id);
     setIsDeleting(true);
     dispatch(deleteContact(id))
@@ -82,7 +91,7 @@ export function ContactItem({ bool, id, name, number }) {
       </Item>
     </>
   );
-}
+};
 
 ContactItem.propTypes = {
   id: PropTypes.string.isRequired,
