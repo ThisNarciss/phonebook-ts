@@ -1,12 +1,12 @@
 import { ContactItem } from '../ContactItem/ContactItem';
 
-import { useMemo } from 'react';
+import { FC, useMemo } from 'react';
 
 import { useSelector } from 'react-redux';
 import { selectFilterContacts } from '../../redux/selectors';
 import { List } from './ContactList.styled';
 
-export const ContactList = () => {
+export const ContactList: FC = () => {
   const getFilteredContacts = useSelector(selectFilterContacts);
 
   const firstLetterArr = useMemo(() => {

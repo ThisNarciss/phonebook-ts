@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 import bgimg from '../../images/bg-01.jpg';
+import { Theme } from '@mui/material';
 
 export const TitleBox = styled.div`
   display: flex;
 `;
-export const SectionBox = styled.section`
+export const SectionBox = styled.section<{ theme: Theme }>`
   margin: 0 auto;
   display: flex;
 

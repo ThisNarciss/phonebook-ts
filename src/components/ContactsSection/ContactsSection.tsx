@@ -15,12 +15,13 @@ import {
 import { errorNotify } from '../../utils/notification';
 import Container from '@mui/material/Container';
 import bgImgHomePage from '../../images/bg-02.webp';
+import { AppDispatch } from '../../redux/store';
 
 export default function ContactsSection() {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());

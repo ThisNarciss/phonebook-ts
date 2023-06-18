@@ -7,7 +7,7 @@ import {
   Error,
   Bar,
 } from '../FormStyle.styled';
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -18,6 +18,8 @@ import { addContact } from '../../redux/contacts/operations';
 import { selectContacts } from '../../redux/contacts/selectors';
 import Button from '@mui/material/Button';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { AppDispatch } from '../../redux/store';
+import { FC } from 'react';
 
 const schema = yup.object().shape({
   name: yup.string().min(2).max(30).trim().required(),
@@ -27,16 +29,21 @@ const schema = yup.object().shape({
 const nameInputId = nanoid();
 const numberInputId = nanoid();
 
-const initialValue = {
+type InitialValueType = {
+  name: string;
+  number: string;
+};
+
+const initialValue: InitialValueType = {
   name: '',
   number: '',
 };
 
-export const ContactForm = () => {
+export const ContactForm: FC = () => {
   const contacts = useSelector(selectContacts);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
-  const addNewContact = obj => {
+  const addNewContact = (obj: InitialValueType) => {
     const findName = contacts.find(
       ({ name }) => name.toLowerCase() === obj.name.toLowerCase()
     );
@@ -56,7 +63,10 @@ export const ContactForm = () => {
     dispatch(addContact(obj));
   };
 
-  const handleFormSubmit = (values, { resetForm }) => {
+  const handleFormSubmit = (
+    values: InitialValueType,
+    { resetForm }: FormikHelpers<InitialValueType>
+  ) => {
     addNewContact(values);
     resetForm();
   };

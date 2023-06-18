@@ -12,10 +12,12 @@ import {
 } from './HomePage.styled';
 import rectangle from '../../images/rectangle.png';
 import rectangleMobile from '../../images/rectangle-mobile.png';
-import { useTheme } from '@emotion/react';
+// import { useTheme } from '@emotion/react';
 import { BookAnimation } from '../../animation/BookAnimation';
+import { useTheme } from '@mui/material';
+import { FC } from 'react';
 
-export function Homepage() {
+export const Homepage: FC = () => {
   const theme = useTheme();
 
   return (
@@ -51,4 +53,4 @@ export function Homepage() {
       </Container>
     </Section>
   );
-}
+};

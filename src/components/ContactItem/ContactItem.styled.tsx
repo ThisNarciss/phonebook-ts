@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Theme } from '@mui/material';
 
 export const ContainerItem = styled.div`
   display: flex;
@@ -14,7 +15,7 @@ export const ContainerItem = styled.div`
   }
 `;
 
-export const Item = styled.li`
+export const Item = styled.li<{ theme: Theme }>`
   position: relative;
   padding: 5px;
   background-color: ${({ theme }) =>
