@@ -12,7 +12,7 @@ import { persistor, store } from './redux/store.ts';
 ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename="/goit-react-hw-08-phonebook">
+      <BrowserRouter basename="/phonebook-ts">
         <PersistGate loading={null} persistor={persistor}>
           <ThemeContainer />
         </PersistGate>
