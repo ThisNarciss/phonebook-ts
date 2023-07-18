@@ -8,7 +8,7 @@ export default function SharedLayout() {
   return (
     <>
       <SiteAppBar />
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<Loader height={120} width={120} />}>
         <Outlet />
       </Suspense>
       <Footer />

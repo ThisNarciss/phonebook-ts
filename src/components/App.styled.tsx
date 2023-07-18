@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 
 export const ChildrenBox = styled.div`
-  height: 810px;
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 30px;
   max-width: 700px;
+  height: 100%;
 `;
 
 export const Notification = styled.p`

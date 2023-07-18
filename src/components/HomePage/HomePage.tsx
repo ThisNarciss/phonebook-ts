@@ -12,7 +12,6 @@ import {
 } from './HomePage.styled';
 import rectangle from '../../images/rectangle.png';
 import rectangleMobile from '../../images/rectangle-mobile.png';
-// import { useTheme } from '@emotion/react';
 import { BookAnimation } from '../../animation/BookAnimation';
 import { useTheme } from '@mui/material';
 import { FC } from 'react';
@@ -30,6 +29,9 @@ export const Homepage: FC = () => {
           justifyContent: 'center',
           alignItems: 'center',
           gap: '50px',
+          overflow: 'hidden',
+          paddingBottom: '30px',
+          paddingTop: '30px',
         }}
       >
         <TextBox>

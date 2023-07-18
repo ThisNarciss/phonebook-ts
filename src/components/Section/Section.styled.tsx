@@ -10,8 +10,7 @@ export const SectionBox = styled.section<{ theme: Theme }>`
   display: flex;
 
   align-items: center;
-  padding: 40px 0px;
-  min-height: 810px;
+  height: 100vh;
   background-image: url(${bgimg});
   background-repeat: no-repeat;
   background-position: center;

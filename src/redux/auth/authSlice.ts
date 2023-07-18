@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import { loginUser, logoutUser, refreshUser, registerUser } from './operations';
 import storage from 'redux-persist/lib/storage';
-import { errorLogin, errorRegister } from '../../utils/notification';
 
 const initialState = {
   user: { name: null, email: null },
@@ -19,30 +18,22 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(registerUser.fulfilled, (state, { payload }) => {
-        console.log('registerUser.ful', payload);
         state.isLoggedIn = true;
         state.token = payload.token;
         state.user = payload.user;
         state.errorAuth = null;
       })
       .addCase(registerUser.rejected, (state, { payload }) => {
-        console.log('registerUser.rej', payload);
-
         state.errorAuth = payload as null;
-        errorRegister();
       })
       .addCase(loginUser.fulfilled, (state, { payload }) => {
-        console.log('loginUser.ful', payload);
         state.isLoggedIn = true;
         state.token = payload.token;
         state.user = payload.user;
         state.errorAuth = null;
       })
       .addCase(loginUser.rejected, (state, { payload }) => {
-        console.log('loginUser.rej', payload);
-
         state.errorAuth = payload as null;
-        errorLogin();
       })
       .addCase(logoutUser.fulfilled, state => {
         state.isLoggedIn = false;

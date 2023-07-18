@@ -1,9 +1,12 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, FC, ReactNode } from 'react';
 import { grey, deepPurple, purple } from '@mui/material/colors';
 import { PaletteMode } from '@mui/material';
 import { ColorModeContext } from '../../ts/types/ColorModeContextType';
-import { App } from '../App';
+
+interface IProps {
+  children: ReactNode;
+}
 
 function getThemeDesign(mode: PaletteMode) {
   return {
@@ -40,17 +43,7 @@ function getThemeDesign(mode: PaletteMode) {
   };
 }
 
-// export const useMyContext = (): ColorModeContextType => {
-//   const context = useContext(ColorModeContext);
-//   if (!context) {
-//     throw new Error(
-//       'useMyContext must be used within a ColorModeContextProvider'
-//     );
-//   }
-//   return context;
-// };
-
-export function ThemeContainer() {
+export const ThemeContainer: FC<IProps> = ({ children }) => {
   const [mode, setMode] = useState<PaletteMode | string>(
     () => JSON.parse(localStorage.getItem('mode') as string) ?? 'light'
   );
@@ -72,9 +65,7 @@ export function ThemeContainer() {
 
   return (
     <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ColorModeContext.Provider>
   );
-}
+};
