@@ -1,12 +1,8 @@
 {
   "routes": [
     {
-      "src": "/phonebook-ts/(.*)",
-      "dest": "/phonebook-ts/$1"
-    },
-    {
-      "src": "/phonebook-ts/(.*)",
-      "dest": "/phonebook-ts/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
