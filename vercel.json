@@ -5,7 +5,7 @@
       "dest": "/phonebook-ts/$1"
     },
     {
-      "src": "/(.*)",
+      "src": "/phonebook-ts/(.*)",
       "dest": "/phonebook-ts/index.html"
     }
   ]
