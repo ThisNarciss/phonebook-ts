@@ -6,7 +6,6 @@ import bgImgHomePage from '../images/bg-02.webp';
 export const UserForm = styled(Form)`
   max-width: 500px;
   border-radius: 10px;
-  overflow: hidden;
   padding: 55px 55px 37px;
   background: transparent;
 

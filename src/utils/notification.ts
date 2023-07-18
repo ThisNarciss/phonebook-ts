@@ -36,15 +36,17 @@ export function errorNotify(error: string) {
   Notify.failure(`${error}`, settings);
 }
 
-export function errorLogin() {
-  Notify.failure(
-    'You have entered an incorrect login or password, please try again',
-    settings
-  );
-}
-export function errorRegister() {
-  Notify.failure(
-    'This user is already registered or you have entered incorrect data',
-    settings
-  );
+export function errorAuth(loginOrRegister: string | null) {
+  const result = loginOrRegister?.split(' ')[0];
+  if (result === 'login') {
+    Notify.failure(
+      'You have entered an incorrect email or password, please try again',
+      settings
+    );
+  } else {
+    Notify.failure(
+      'This user is already registered or you have entered incorrect data',
+      settings
+    );
+  }
 }

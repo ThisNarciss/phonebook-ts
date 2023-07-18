@@ -33,13 +33,22 @@ export default function ContactsSection() {
   }, [error]);
   return (
     <Section title="Contacts">
-      <Container maxWidth="xl">
+      <Container
+        maxWidth="xl"
+        sx={{
+          height: '100vh',
+          paddingBottom: '30px',
+          paddingTop: '30px',
+        }}
+      >
         <Container
           sx={{
-            padding: '30px 0',
+            padding: '30px 10px',
             display: {
               xs: 'flex',
             },
+            overflow: 'auto',
+            height: '100%',
             flexDirection: { xs: 'column', md: 'row' },
             justifyContent: { md: 'center' },
             alignItems: { xs: 'center' },

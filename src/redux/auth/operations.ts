@@ -31,7 +31,7 @@ export const registerUser = createAsyncThunk<
       setAuthHeader(user.token);
       return user;
     })
-    .catch(error => thunkAPI.rejectWithValue(error.message));
+    .catch(error => thunkAPI.rejectWithValue(`register ${error.message}`));
 });
 
 export const loginUser = createAsyncThunk<ILoginFulfilledAction, ILogin>(
@@ -42,7 +42,7 @@ export const loginUser = createAsyncThunk<ILoginFulfilledAction, ILogin>(
         setAuthHeader(user.token);
         return user;
       })
-      .catch(error => thunkAPI.rejectWithValue(error.message));
+      .catch(error => thunkAPI.rejectWithValue(`login ${error.message}`));
   }
 );
 

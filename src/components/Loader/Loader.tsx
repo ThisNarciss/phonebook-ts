@@ -1,13 +1,12 @@
 import { Blocks, Oval } from 'react-loader-spinner';
 
-export function Loader() {
+export function Loader({ height = 80, width = 80 }) {
   return (
     <Blocks
       visible={true}
-      height="80"
-      width="80"
+      height={height}
+      width={width}
       ariaLabel="blocks-loading"
-      wrapperStyle={{}}
       wrapperClass="blocks-wrapper"
     />
   );
