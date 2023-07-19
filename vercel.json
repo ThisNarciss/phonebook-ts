@@ -1,12 +1,8 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/phonebook-ts/(.*)",
-      "dest": "/phonebook-ts/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/phonebook-ts/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
